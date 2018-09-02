@@ -1,0 +1,52 @@
+<div>
+    <h2>Search Fare</h2>
+    <div>
+        <form (ngSubmit)="onSubmit()" #fareForm="ngForm">
+            <div class="form-group">
+                <label for="origin">Origin</label>
+                <input type="text" class="form-control" id="origin"
+                       required
+                       [(ngModel)]="fare[0].origin" name="origin"
+                       #name="ngModel">
+                <!--<div [hidden]="origin.valid || origin.pristine"
+                     class="alert alert-danger">
+                    Origin is required
+                </div>-->
+            </div>
+
+            <div class="form-group">
+                <label for="destination">Destination</label>
+                <input type="text" class="form-control" id="destination"
+                       required
+                       [(ngModel)]="fare[0].destination" name="destination"
+                       #name="ngModel">
+                <!--<div [hidden]="destination.valid || destination.pristine"
+                     class="alert alert-danger">
+                    Destination is required
+                </div>-->
+            </div>
+
+            <button type="submit" class="btn btn-success" [disabled]="!fareForm.form.valid">Submit</button>
+        </form>
+    </div>
+</div>
+
+<div>
+    <h2>Fare Details</h2>
+    <div>
+        <table>
+            <tr>
+                <th>Origin</th>
+                <th>Destination</th>
+                <th>Currency</th>
+                <th>Amount</th>
+            </tr>
+            <tr *ngFor="let f of fare">
+                <td>{{f.origin}}</td>
+                <td>{{f.destination}}</td>
+                <td>{{f.currency}}</td>
+                <td>{{f.amount}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
